@@ -1,39 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykamboua <ykamboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 18:56:24 by ykamboua          #+#    #+#             */
-/*   Updated: 2025/09/20 22:25:22 by ykamboua         ###   ########.fr       */
+/*   Created: 2025/09/19 23:35:47 by ykamboua          #+#    #+#             */
+/*   Updated: 2025/09/19 23:35:59 by ykamboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
 
-#include <iostream>
-
-class	ScalarConverter
-{
-	private:
-		ScalarConverter();
-		ScalarConverter(ScalarConverter& other);
-		ScalarConverter& operator=(ScalarConverter& other);
-		~ScalarConverter();
-	public:
-		static	void convert(const std::string& input);
-};
-
-enum LiteralTypes
-{
-    CHAR,
-    INT,
-    FLOAT,
-    DOUBLE,
-    PSEUDO,
-	NONE
-};
-
-#endif
+#include "Serializer.hpp"

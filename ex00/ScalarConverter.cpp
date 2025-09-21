@@ -6,7 +6,7 @@
 /*   By: ykamboua <ykamboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 18:56:32 by ykamboua          #+#    #+#             */
-/*   Updated: 2025/09/20 00:43:39 by ykamboua         ###   ########.fr       */
+/*   Updated: 2025/09/20 22:28:15 by ykamboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ScalarConverter.hpp"
 #include <limits>
 #include<cctype>
+#include <iomanip>
 // #include<string.h>
 // #define CHAR 0;
 // #define INT 1;
@@ -36,34 +37,36 @@ ScalarConverter& ScalarConverter::operator=(ScalarConverter& other)
 ScalarConverter::~ScalarConverter()
 {}
 
-// int input_parser(const std::string& str)
-// {
-//     std::string input = str;
+int input_parser(const std::string& str)
+{
+    std::string input = str;
 
-//     if (input.empty())
-//         return (1);
-//     // if (input == "nan" || input == "nanf" || input == "+inf" || input == "-inf" ||
-//     //     input == "+inff" || input == "-inff")
-//     //     return (0);
-//     if (input.length() == 1 && !std::isdigit(input[0]))
-//         return (0);
-//     if (input[0] == '+' || input[0] == '-')
-//         input = input.substr(1);
-//     if (input.find_first_not_of("0123456789.f") != std::string::npos)
-//         return (1);
-//     if (std::count(input.begin(), input.end(), '.') > 1)
-//         return (1);
-//     if (std::count(input.begin(), input.end(), 'f') > 1)
-//         return (1);
-//     if (input.find('f') != std::string::npos && input.back() != 'f')
-//         return (1);
-//     return (0);
-// }
+    if (input.empty())
+        return (1);
+    // if (input == "nan" || input == "nanf" || input == "+inf" || input == "-inf" ||
+    //     input == "+inff" || input == "-inff")
+    //     return (0);
+    if (input.length() == 1 && !std::isdigit(input[0]))
+        return (0);
+    if (input[0] == '+' || input[0] == '-')
+        input = input.substr(1);
+    if (input.find_first_not_of("0123456789.f") != std::string::npos)
+        return (1);
+    if (std::count(input.begin(), input.end(), '.') > 1)
+        return (1);
+    if (std::count(input.begin(), input.end(), 'f') > 1)
+        return (1);
+    if (input.find('f') != std::string::npos && input.back() != 'f')
+        return (1);
+    return (0);
+}
 
 LiteralTypes detect_type(const std::string& input)
 {
 	if (input == "+inf" || input == "-inf" || input == "+inff" || input == "-inff" || input == "nan" || input == "nanf")
         return (PSEUDO);
+	if(input_parser(input) == 1)
+		return (NONE);
 	if(input.length() == 1 && !std::isdigit(input[0]))
 		return (CHAR);
 	if(input.find('.') != std::string::npos)
@@ -82,8 +85,14 @@ void ScalarConverter::convert(const std::string& input)
 
 	switch(type)
 	{
+		case NONE:
+		{
+			std::cout << "none type detected here " << std::endl;
+			break;
+		}
 		case CHAR:
 		{
+			std::cout << std::fixed << std::setprecision(1);
 			char c = input[0];
 			std::cout << "char : " << c << std::endl;
 			std::cout << "int : " << static_cast<int>(c) << std::endl;
@@ -95,6 +104,7 @@ void ScalarConverter::convert(const std::string& input)
 		{
 			try
 			{
+				std::cout << std::fixed << std::setprecision(1);
 				int n = std::stoi(input);
 				if(n >= 32 && n <= 126)
 					std::cout << "char : " << static_cast<char>(n) << std::endl;
@@ -114,7 +124,8 @@ void ScalarConverter::convert(const std::string& input)
 		{
 			try
 			{
-				int f = std::stof(input);
+				std::cout << std::fixed << std::setprecision(1);
+				float f = std::stof(input);
 				if(f >= 32 && f <= 126)
 					std::cout << "char : " << static_cast<char>(f) << std::endl;
 				else
@@ -133,7 +144,8 @@ void ScalarConverter::convert(const std::string& input)
 		{
 			try
 			{
-				int d = std::stod(input);
+				std::cout << std::fixed << std::setprecision(1);
+				double d = std::stod(input);
 				if(d >= 32 && d <= 126)
 					std::cout << "char : " << static_cast<char>(d) << std::endl;
 				else
