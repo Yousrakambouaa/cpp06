@@ -6,7 +6,7 @@
 /*   By: ykamboua <ykamboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:42:20 by ykamboua          #+#    #+#             */
-/*   Updated: 2025/09/23 21:15:46 by ykamboua         ###   ########.fr       */
+/*   Updated: 2025/11/21 18:48:40 by ykamboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,5 @@ class Base
 	public:
 		virtual ~Base();
 };
-
-
 
 #endif

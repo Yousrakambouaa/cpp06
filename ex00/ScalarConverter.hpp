@@ -6,14 +6,18 @@
 /*   By: ykamboua <ykamboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 18:56:24 by ykamboua          #+#    #+#             */
-/*   Updated: 2025/10/05 23:42:45 by ykamboua         ###   ########.fr       */
+/*   Updated: 2025/11/29 23:07:23 by ykamboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
+#ifndef SCALAR_CONVERTER_HPP
+#define SCALAR_CONVERTER_HPP
 
 #include <iostream>
+#include <limits>
+#include <cctype>
+#include <iomanip>
+#include <cfloat>
 
 class	ScalarConverter
 {
@@ -21,7 +25,7 @@ class	ScalarConverter
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter& other);
 		ScalarConverter& operator=(const ScalarConverter& other);
-		~ScalarConverter() ;
+		~ScalarConverter();
 	public:
 		static	void convert(const std::string& input);
 };

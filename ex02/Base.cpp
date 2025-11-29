@@ -6,7 +6,7 @@
 /*   By: ykamboua <ykamboua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:40:53 by ykamboua          #+#    #+#             */
-/*   Updated: 2025/09/25 02:45:05 by ykamboua         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:44:22 by ykamboua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@
 
 
 Base::~Base()
-{
-	
-}
+{}
 
 Base* generate()
 {
@@ -34,9 +32,7 @@ Base* generate()
 	if(n % 3 == 2)
 		return (new C);
 	std::cout << n << std::endl;
-
 	return(nullptr);
-	
 }
 
 void identify(Base* p)
